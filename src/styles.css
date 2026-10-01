@@ -1,0 +1,176 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * NEXA Sport — Swimming branch management system design system.
+ * Navy #0A3D62 / Cyan #00A8FF / White, Arabic-first (Cairo / Tajawal).
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --font-sans: "Cairo", "Tajawal", system-ui, sans-serif;
+  --font-display: "Tajawal", "Cairo", system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --shadow-glass: 0 20px 45px -20px oklch(0.24 0.09 250 / 0.55);
+  --shadow-card: 0 10px 30px -18px oklch(0.24 0.09 250 / 0.45);
+}
+
+:root {
+  --radius: 0.9rem;
+
+  /* #0A3D62 */
+  --navy: oklch(0.32 0.077 246.5);
+  --navy-deep: oklch(0.24 0.07 248);
+  /* #00A8FF */
+  --cyan: oklch(0.69 0.163 240.5);
+
+  --background: oklch(0.975 0.008 240);
+  --foreground: oklch(0.28 0.06 248);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.28 0.06 248);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.28 0.06 248);
+  --primary: var(--navy);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: var(--cyan);
+  --secondary-foreground: oklch(1 0 0);
+  --muted: oklch(0.955 0.012 240);
+  --muted-foreground: oklch(0.52 0.035 248);
+  --accent: oklch(0.93 0.045 235);
+  --accent-foreground: var(--navy);
+  --destructive: oklch(0.58 0.22 22);
+  --destructive-foreground: oklch(1 0 0);
+  --success: oklch(0.6 0.15 155);
+  --success-foreground: oklch(1 0 0);
+  --warning: oklch(0.75 0.15 70);
+  --warning-foreground: oklch(0.26 0.05 60);
+  --border: oklch(0.89 0.02 240);
+  --input: oklch(0.89 0.02 240);
+  --ring: var(--cyan);
+  --chart-1: var(--cyan);
+  --chart-2: var(--navy);
+  --chart-3: oklch(0.6 0.15 155);
+  --chart-4: oklch(0.75 0.15 70);
+  --chart-5: oklch(0.58 0.22 22);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    font-family: var(--font-sans);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+}
+
+@utility app-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+@utility app-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    160deg,
+    oklch(0.24 0.07 248 / 0.9) 0%,
+    oklch(0.32 0.077 246.5 / 0.82) 45%,
+    oklch(0.69 0.163 240.5 / 0.62) 100%
+  );
+}
+
+@utility glass-panel {
+  background-color: oklch(1 0 0 / 0.95);
+  border: 1px solid oklch(1 0 0 / 0.6);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-glass);
+  backdrop-filter: blur(10px);
+}
+
+@utility glass-soft {
+  background-color: oklch(1 0 0 / 0.14);
+  border: 1px solid oklch(1 0 0 / 0.25);
+  border-radius: var(--radius-xl);
+  color: oklch(1 0 0);
+  backdrop-filter: blur(8px);
+}
+
+@utility doc-sheet {
+  background: #fff;
+  color: #0a3d62;
+  border: 2px solid #0a3d62;
+  border-radius: 0.5rem;
+  padding: 1.75rem;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .app-backdrop,
+  .app-overlay {
+    display: none !important;
+  }
+
+  body {
+    background: #fff !important;
+  }
+
+  .print-area {
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+}
